@@ -1,7 +1,5 @@
 <template>
-  <BaseHeader></BaseHeader>
+  <div class="container">Hello World!!</div>
 </template>
 
-<script setup>
-import BaseHeader from '../components/BaseHeader.vue';
-</script>
+<script setup></script>
