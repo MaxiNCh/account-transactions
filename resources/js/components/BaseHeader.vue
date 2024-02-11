@@ -30,10 +30,13 @@
 
 <script setup>
 import { useUsersStore } from '@/store/users';
+import { useRouter } from 'vue-router';
 
 const usersStore = useUsersStore();
+const router = useRouter();
 
-function signOut() {
-  usersStore.logout();
+async function signOut() {
+  await usersStore.logout();
+  router.push({ name: 'login' });
 }
 </script>

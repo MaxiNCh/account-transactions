@@ -3,6 +3,7 @@ import HomeView from '@/views/HomeView.vue';
 import TransactionsView from '@/views/TransactionsView.vue';
 import SignUpView from '@/views/SignUpView.vue';
 import LoginView from '@/views/LoginView.vue';
+import { useUsersStore } from '@/store/users';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,6 +29,16 @@ const router = createRouter({
       component: LoginView
     }
   ]
+});
+
+router.beforeEach(async (to) => {
+  const publicPages = ['login', 'sign-up'];
+  const authRequired = !publicPages.includes(to.name);
+  const usersStore = useUsersStore();
+
+  if (authRequired && !usersStore.isAuth) {
+    return '/login';
+  }
 });
 
 export default router;
