@@ -21,17 +21,19 @@ const router = createRouter({
     {
       path: '/sign-up',
       name: 'sign-up',
-      component: SignUpView
+      component: SignUpView,
+      beforeEnter: toHome
     },
     {
       path: '/login',
       name: 'login',
-      component: LoginView
+      component: LoginView,
+      beforeEnter: toHome
     }
   ]
 });
 
-router.beforeEach(async (to) => {
+router.beforeEach((to) => {
   const publicPages = ['login', 'sign-up'];
   const authRequired = !publicPages.includes(to.name);
   const usersStore = useUsersStore();
@@ -40,5 +42,12 @@ router.beforeEach(async (to) => {
     return '/login';
   }
 });
+
+function toHome() {
+  const usersStore = useUsersStore();
+  if (usersStore.isAuth) {
+    return '/';
+  }
+}
 
 export default router;

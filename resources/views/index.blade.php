@@ -10,6 +10,9 @@
 
 <body class="h-100">
     <div id="app" class="d-flex flex-column h-100"></div>
+    <script>
+        var userData = {{ Js::from($userData) }};
+    </script>
     @vite('resources/js/app.js')
 </body>
 

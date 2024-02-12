@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const useUsersStore = defineStore('users', {
   state: () => ({
-    userData: null
+    userData: window.userData
   }),
 
   getters: {

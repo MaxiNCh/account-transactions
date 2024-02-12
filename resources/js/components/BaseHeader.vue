@@ -11,8 +11,8 @@
     </div>
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><RouterLink to="/" class="nav-link px-2 link-secondary">Home</RouterLink></li>
-      <li><a href="#" class="nav-link px-2">Transactions</a></li>
+      <li><RouterLink to="/" class="nav-link px-2">Home</RouterLink></li>
+      <li><RouterLink to="/transactions" class="nav-link px-2">Transactions</RouterLink></li>
     </ul>
 
     <div class="col-md-3 text-end d-flex justify-content-end align-items-center">
