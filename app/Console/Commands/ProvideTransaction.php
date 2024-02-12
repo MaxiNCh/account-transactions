@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\ProcessTransaction;
 use App\Models\User;
 use App\Services\TransactionService;
 use Exception;
@@ -32,7 +33,7 @@ class ProvideTransaction extends Command implements PromptsForMissingInput
     /**
      * Execute the console command.
      */
-    public function handle(TransactionService $service)
+    public function handle()
     {
         try {
             Validator::make($this->arguments(), [
@@ -49,8 +50,8 @@ class ProvideTransaction extends Command implements PromptsForMissingInput
             };
 
 
-            $transaction = $service->create($user->account, $this->argument('amount'), $this->argument('note'));
-            $this->info("Trnsaction for {$transaction->amount} was successfully created");
+            ProcessTransaction::dispatch($user->account, $this->argument('amount'), $this->argument('note'));
+            $this->info("Job to create transaction was dispatched");
         } catch (Exception $e) {
             $this->error($e->getMessage());
         }
