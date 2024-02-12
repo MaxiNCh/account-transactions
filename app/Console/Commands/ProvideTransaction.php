@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Jobs\ProcessTransaction;
 use App\Models\User;
-use App\Services\TransactionService;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\PromptsForMissingInput;
